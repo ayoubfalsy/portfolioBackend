@@ -1,5 +1,6 @@
 package com.javatechie.springsecurityjwtexample.controllers;
 
+import com.javatechie.springsecurityjwtexample.entities.AppRole;
 import com.javatechie.springsecurityjwtexample.entities.AppUser;
 import com.javatechie.springsecurityjwtexample.entities.ProjectInfo;
 import com.javatechie.springsecurityjwtexample.entitiesStatus.Pwd;
@@ -91,6 +92,23 @@ public class UserController {
                 sendEmailService.sendEmail(strEmail, strEmail, subject, strText);
             }
 
+        } catch (Exception e) {
+            LogService.log(Level.SEVERE, e.toString(), e);
+        }
+        return new ResponseEntity<Boolean>(blnType, HttpStatus.OK);
+
+    }
+
+    @PostMapping("/addAdmin/{strEmail}")
+    public ResponseEntity<?> AddAdmin(@PathVariable String strEmail) {
+        Boolean blnType = false;
+        try {
+            if (userService.findAll().size() == 0) {
+                userService.SaveUser(new AppUser("portfoliosupp@gmail.com", "123", null));
+                userService.SaveRole(new AppRole("ADMIN"));
+                userService.addRoleToUser("portfoliosupp@gmail.com", "ADMIN");
+                blnType = true;
+            }
         } catch (Exception e) {
             LogService.log(Level.SEVERE, e.toString(), e);
         }

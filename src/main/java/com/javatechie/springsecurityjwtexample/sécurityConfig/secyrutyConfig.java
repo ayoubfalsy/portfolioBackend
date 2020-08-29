@@ -32,7 +32,7 @@ public class secyrutyConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-        http.authorizeRequests().antMatchers("/", "/login/**", "/header/getHeader/*", "/greeting/getGreeting/*", "/greeting/getPdf/*", "/socialMedia/getMedia/*",
+        http.authorizeRequests().antMatchers("/", "/login/**", "/user/addAdmin/*", "/header/getHeader/*", "/greeting/getGreeting/*", "/greeting/getPdf/*", "/socialMedia/getMedia/*",
                 "/skillsInfo/getSkillsInfo/*", "/competence/getCompetence/*", "/project/getProjects/*", "/contact/getContact/*", "/user/forgot/*", "/greeting/sendEmail").permitAll();
         http.authorizeRequests().antMatchers(HttpMethod.POST, "/header/add", "/greeting/add", "/socialMedia/add", "/skillsInfo/add", "/competence/add"
                 , "/project/add", "/project/DeleteProject/*", "/contact/add", "/login/checkPwd",

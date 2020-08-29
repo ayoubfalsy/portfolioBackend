@@ -8,6 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class UserService {
     @Autowired
@@ -28,10 +31,17 @@ public class UserService {
     }
 
     public void addRoleToUser(String strUserEmail, String strRoleName) {
+        List<AppRole> lstRole = new ArrayList<>();
         AppRole appRole = roleRepository.findAppRoleByRoleName(strRoleName);
         AppUser user = userRepository.findByEmail(strUserEmail);
-        user.getRoles().add(appRole);
+        lstRole.add(appRole);
+//        user.getRoles().add(appRole);
+        user.setRoles(lstRole);
         userRepository.save(user);
+    }
+
+    public List<AppUser> findAll() {
+        return userRepository.findAll();
     }
 
 //    public AppUser findUserByUserName(String strUserName) {
