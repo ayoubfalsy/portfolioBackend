@@ -24,7 +24,7 @@ import java.util.Arrays;
 import java.util.Collections;
 
 @SpringBootApplication
-public class SpringSecurityJwtExampleApplication extends SpringBootServletInitializer {
+public class SpringSecurityJwtExampleApplication {
 
     @Autowired
     private UserService userService;
@@ -37,10 +37,10 @@ public class SpringSecurityJwtExampleApplication extends SpringBootServletInitia
     }
 
     //
-    @Override
-    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
-        return builder.sources(SpringSecurityJwtExampleApplication.class);
-    }
+//    @Override
+//    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+//        return builder.sources(SpringSecurityJwtExampleApplication.class);
+//    }
 
     @Bean
     public BCryptPasswordEncoder getBCPA() {
