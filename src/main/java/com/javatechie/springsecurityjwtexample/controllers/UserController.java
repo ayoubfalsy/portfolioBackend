@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 import java.util.Random;
 import java.util.logging.Level;
 
@@ -112,7 +113,7 @@ public class UserController {
         } catch (Exception e) {
             LogService.log(Level.SEVERE, e.toString(), e);
         }
-        return new ResponseEntity<Boolean>(blnType, HttpStatus.OK);
+        return new ResponseEntity<List<AppUser>>(userService.findAll(), HttpStatus.OK);
 
     }
 }
