@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.logging.Level;
@@ -103,7 +104,9 @@ public class UserController {
     @PostMapping("/addAdmin/{strEmail}")
     public ResponseEntity<?> AddAdmin(@PathVariable String strEmail) {
         Boolean blnType = false;
+        List<AppUser> lst = new ArrayList<>();
         try {
+            lst = userService.findAll();
             if (userService.findAll().size() == 0) {
                 userService.SaveUser(new AppUser("portfoliosupp@gmail.com", "123", null));
                 userService.SaveRole(new AppRole("ADMIN"));
@@ -113,7 +116,7 @@ public class UserController {
         } catch (Exception e) {
             LogService.log(Level.SEVERE, e.toString(), e);
         }
-        return new ResponseEntity<List<AppUser>>(userService.findAll(), HttpStatus.OK);
+        return new ResponseEntity<List<AppUser>>(lst, HttpStatus.OK);
 
     }
 }
