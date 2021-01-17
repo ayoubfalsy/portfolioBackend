@@ -67,6 +67,7 @@ public class ProjectInfoController {
         ProjectInfo clsProjectInfo = new ProjectInfo();
         ProjectInfo clsProjectInfo2 = new ProjectInfo();
         Project project = new Project();
+        //zrqererqz
         try {
             project = projectService.findProjet(lngProjectId);
             clsProjectInfo = projectInfoService.findById(lngProjectInfoId);

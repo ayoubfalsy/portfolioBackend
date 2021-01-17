@@ -69,7 +69,6 @@ public class ContactController {
                 greeting.setSvg(false);
             } else {
                 greeting.setImg(contactService.decompressBytes(greeting.getImg()));
-
             }
 
         } catch (Exception e) {
