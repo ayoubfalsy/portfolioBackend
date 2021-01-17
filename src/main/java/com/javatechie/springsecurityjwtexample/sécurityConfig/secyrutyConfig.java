@@ -33,7 +33,7 @@ public class secyrutyConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.authorizeRequests().antMatchers("/", "/login/**", "/user/addAdmin/*", "/header/getHeader/*", "/greeting/getGreeting/*", "/greeting/getPdf/*", "/socialMedia/getMedia/*",
-                "/skillsInfo/getSkillsInfo/*", "/competence/getCompetence/*", "/project/getProjects/*", "/contact/getContact/*", "/user/forgot/*", "/greeting/sendEmail").permitAll();
+                "/skillsInfo/getSkillsInfo/*", "/competence/getCompetence/*", "/project/getProjects/*", "/contact/getContact/*", "/user/forgot/*", "/greeting/sendEmail", "/findAllBook", "/addBook", "/findAllBook/*", "/delete/*").permitAll();
         http.authorizeRequests().antMatchers(HttpMethod.POST, "/header/add", "/greeting/add", "/socialMedia/add", "/skillsInfo/add", "/competence/add"
                 , "/project/add", "/project/DeleteProject/*", "/contact/add", "/login/checkPwd",
                 "/competence/DeleteCompetence/*", "/skillsInfo/DeleteSkillsInfo/*").hasAnyAuthority("ADMIN");
